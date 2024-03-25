@@ -28,4 +28,10 @@ git pull origin main
 
 ```shell
 git push origin main
-``` 
+```
+
+6. Ver URL dos respositórios remotos
+
+```shell
+git remote -v
+```

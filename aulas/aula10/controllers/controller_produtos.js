@@ -25,9 +25,13 @@ async function buscarPeloId(req, res, next) {
   try {
     const id = new mongoose.Types.ObjectId(req.params.id);
     const produto = await Produto.findOne({ _id: id });
-    next();
+    if (produto) {
+      next();
+    } else {
+      res.status(404).json({ msg: "Produto nao contrado" });
+    }
   } catch (err) {
-    res.status(404).json({ msg: "Produto nao contrado" });
+    res.status(400).json({ msg: "Id invalido" });
   }
 }
 
